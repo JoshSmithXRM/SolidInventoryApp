@@ -5,19 +5,20 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolidInventoryApp", "SolidInventoryApp", "{F46A9699-FE95-4367-B450-26DA6081CB8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidInventoryApp.DataModel", "SolidInventoryApp\DataModel\SolidInventoryApp.DataModel.csproj", "{71F5D79A-34B5-47B6-B8EB-4286BBA95E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidInventoryApp.DataModel", "SolidInventoryApp\DataModel\SolidInventoryApp.DataModel.csproj", "{71F5D79A-34B5-47B6-B8EB-4286BBA95E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidInventoryApp.DataAccess", "SolidInventoryApp\DataAccess\SolidInventoryApp.DataAccess.csproj", "{7189133A-D7A8-4643-9467-E896C622F1D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidInventoryApp.DataAccess", "SolidInventoryApp\DataAccess\SolidInventoryApp.DataAccess.csproj", "{7189133A-D7A8-4643-9467-E896C622F1D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidInventoryApp.WebApi", "SolidInventoryApp\WebApi\SolidInventoryApp.WebApi.csproj", "{5F813065-B42E-42E1-BDB4-DF2F89FAC06E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidInventoryApp.WebApi", "SolidInventoryApp\WebApi\SolidInventoryApp.WebApi.csproj", "{5F813065-B42E-42E1-BDB4-DF2F89FAC06E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{134727BD-3F0E-4ACB-B15D-A7512F0ADE2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidInventoryApp.Blazor", "SolidInventoryApp\Blazor\SolidInventoryApp.Blazor.csproj", "{38F3D5BA-A1AB-4CBF-8E8A-4F149C5B880D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{71F5D79A-34B5-47B6-B8EB-4286BBA95E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -32,10 +33,21 @@ Global
 		{5F813065-B42E-42E1-BDB4-DF2F89FAC06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F813065-B42E-42E1-BDB4-DF2F89FAC06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F813065-B42E-42E1-BDB4-DF2F89FAC06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F3D5BA-A1AB-4CBF-8E8A-4F149C5B880D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F3D5BA-A1AB-4CBF-8E8A-4F149C5B880D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F3D5BA-A1AB-4CBF-8E8A-4F149C5B880D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F3D5BA-A1AB-4CBF-8E8A-4F149C5B880D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{71F5D79A-34B5-47B6-B8EB-4286BBA95E03} = {F46A9699-FE95-4367-B450-26DA6081CB8A}
 		{7189133A-D7A8-4643-9467-E896C622F1D4} = {F46A9699-FE95-4367-B450-26DA6081CB8A}
 		{5F813065-B42E-42E1-BDB4-DF2F89FAC06E} = {F46A9699-FE95-4367-B450-26DA6081CB8A}
+		{38F3D5BA-A1AB-4CBF-8E8A-4F149C5B880D} = {F46A9699-FE95-4367-B450-26DA6081CB8A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79589DC7-17AD-4453-A364-4E9F976C2258}
 	EndGlobalSection
 EndGlobal
