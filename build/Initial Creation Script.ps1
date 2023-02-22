@@ -1,75 +1,34 @@
-# Define the application name and project structure
-$AppName = "SolidInventoryApp"
-$ProjectRoot = ".\$AppName"
-$DataModelDir = "$ProjectRoot\DataModel"
-$DataAccessDir = "$ProjectRoot\DataAccess"
+# Set variables for project name and root directory
+$projectName = "SolidInventoryApp"
+$rootDir = "$(Split-Path -Path $MyInvocation.MyCommand.Path -Parent)\.."
 
-# Create the project directory structure
-New-Item -ItemType Directory -Path $ProjectRoot | Out-Null
-New-Item -ItemType Directory -Path $DataModelDir | Out-Null
-New-Item -ItemType Directory -Path $DataAccessDir | Out-Null
-
-# Create the required code files
-$InventoryItemContent = @"
-namespace $AppName.DataModel
-{
-    public class InventoryItem
-    {
-        // TODO: Define the InventoryItem class properties
-    }
+# Create root directory if it doesn't exist
+if (!(Test-Path -Path $rootDir -PathType Container)) {
+    New-Item -Path $rootDir -ItemType Directory
 }
-"@
-New-Item -ItemType File -Path "$DataModelDir\InventoryItem.cs" | Out-Null
-Set-Content -Path "$DataModelDir\InventoryItem.cs" -Value $InventoryItemContent
 
-$OrderContent = @"
-namespace $AppName.DataModel
-{
-    public class Order
-    {
-        // TODO: Define the Order class properties
-    }
-}
-"@
-New-Item -ItemType File -Path "$DataModelDir\Order.cs" | Out-Null
-Set-Content -Path "$DataModelDir\Order.cs" -Value $OrderContent
+# Create solution file
+$solutionFile = "$rootDir\$projectName.sln"
+dotnet new sln -n $projectName -o $rootDir
 
-$ProductContent = @"
-namespace $AppName.DataModel
-{
-    public class Product
-    {
-        // TODO: Define the Product class properties
-    }
-}
-"@
-New-Item -ItemType File -Path "$DataModelDir\Product.cs" | Out-Null
-Set-Content -Path "$DataModelDir\Product.cs" -Value $ProductContent
+# Create project directories
+$srcDir = "$rootDir\$projectName"
+$modelsDir = "$srcDir\DataModel"
+$dataAccessDir = "$srcDir\DataAccess"
+$webApiDir = "$srcDir\WebApi"
 
-$IRepositoryContent = @"
-namespace $AppName.DataAccess
-{
-    public interface IRepository<T>
-    {
-        IEnumerable<T> GetAll();
-        T GetById(int id);
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(int id);
-    }
-}
-"@
-New-Item -ItemType File -Path "$DataAccessDir\IRepository.cs" | Out-Null
-Set-Content -Path "$DataAccessDir\IRepository.cs" -Value $IRepositoryContent
+New-Item -Path $modelsDir -ItemType Directory
+New-Item -Path $dataAccessDir -ItemType Directory
+New-Item -Path $webApiDir -ItemType Directory
 
-$RepositoryContent = @"
-namespace $AppName.DataAccess
-{
-    public class Repository<T> : IRepository<T> where T : class
-    {
-        // TODO: Implement IRepository<T> methods using Entity Framework
-    }
-}
-"@
-New-Item -ItemType File -Path "$DataAccessDir\Repository.cs" | Out-Null
-Set-Content -Path "$DataAccessDir\Repository.cs" -Value $RepositoryContent
+# Create project files
+cd $srcDir
+dotnet new classlib -n "$projectName.DataModel" -o $modelsDir
+dotnet new classlib -n "$projectName.DataAccess" -o $dataAccessDir
+dotnet new webapi -n "$projectName.WebApi" -o $webApiDir
+
+# Add projects to solution
+cd $rootDir
+dotnet sln add $modelsDir\$projectName.DataModel.csproj $dataAccessDir\$projectName.DataAccess.csproj $webApiDir\$projectName.WebApi.csproj
+
+Write-Host "Project created successfully."
